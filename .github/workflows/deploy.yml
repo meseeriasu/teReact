@@ -11,7 +11,9 @@ jobs:
       uses: actions/setup-node@v1
     - name: Setup the code
       run: npm install
-    - name: Deploy to Firebase
-      uses: mohammed-atif/firebase-publish-react@v1.0
-      with:
-        firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+    - name: GitHub Action for Firebase
+      uses: w9jds/firebase-action@v11.16.0
+      with: 
+        args: deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
